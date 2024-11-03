@@ -4,6 +4,9 @@
 ## How to run it?
 
 pip install requirement.txt
+
 cd RHGAT
-python main_yamanishi.py
-python main_luo_all_network.py
+
+python main_yamanashi.py
+
+python main_luo_all_networks.py
