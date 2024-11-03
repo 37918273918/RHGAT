@@ -1,4 +1,4 @@
-# RHGAT-2
+# RHGAT
  The data and code of RHGAT
 
 ## How to run it?
@@ -7,6 +7,6 @@ pip install requirements.txt
 
 cd RHGAT
 
-python main_yamanashi.py
+python Yamanashi_main.py
 
-python main_luo_all_networks.py
+python Luo_main.py
