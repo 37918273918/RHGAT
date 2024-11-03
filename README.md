@@ -3,7 +3,7 @@
 
 ## How to run it?
 
-pip install requirement.txt
+pip install requirements.txt
 
 cd RHGAT
 
