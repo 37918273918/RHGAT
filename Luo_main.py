@@ -8,11 +8,11 @@ import tensorflow as tf
 import numpy as np
 import scipy.sparse as sp
 from sklearn import metrics
-from decagon.deep.optimizer import DecagonOptimizer
-from decagon.deep.model import DecagonModel
-from decagon.deep.minibatch import EdgeMinibatchIterator
-from decagon.utility import rank_metrics, preprocessing
-from decagon.utility import loadData
+from Script.Model.optimizer import DecagonOptimizer
+from Script.Model.model import DecagonModel
+from Script.Model.minibatch import EdgeMinibatchIterator
+from Script.tools import rank_metrics, preprocessing
+from Script.tools import loadData
 
 # Train on CPU (hide GPU) due to memory constraints
 os.environ['CUDA_VISIBLE_DEVICES'] = "0"
@@ -81,25 +81,25 @@ MAE_10_list   = []
 # RealNet
 # About Drug-Drug
 # 1 interaction+4 sim+ 1 for protein   6networks
-drug_drug_path = './DTI_data/luo/sevenNets/mat_drug_drug.txt'
-drug_drug_sim_chemical_path = './DTI_data/luo/sim_network/Sim_mat_Drugs.txt'
-drug_drug_sim_interaction_path = './DTI_data/luo/sim_network/Sim_mat_drug_drug.txt'
-drug_drug_sim_se_path = './DTI_data/luo/sim_network/Sim_mat_drug_se.txt'
-drug_drug_sim_disease_path = './DTI_data/luo/sim_network/Sim_mat_drug_disease.txt'
-drug_protein_path = './DTI_data/luo/sevenNets/mat_drug_protein.txt'
+drug_drug_path = 'Dataset/luo/sevenNets/mat_drug_drug.txt'
+drug_drug_sim_chemical_path = 'Dataset/luo/sim_network/Sim_mat_Drugs.txt'
+drug_drug_sim_interaction_path = 'Dataset/luo/sim_network/Sim_mat_drug_drug.txt'
+drug_drug_sim_se_path = 'Dataset/luo/sim_network/Sim_mat_drug_se.txt'
+drug_drug_sim_disease_path = 'Dataset/luo/sim_network/Sim_mat_drug_disease.txt'
+drug_protein_path = 'Dataset/luo/sevenNets/mat_drug_protein.txt'
 
 # 1interaction + 3sim +1 for drug 5 networks
 # About Protein
-protein_drug_path = './DTI_data/luo/sevenNets/mat_protein_drug.txt'
-protein_protein_path = './DTI_data/luo/sevenNets/mat_protein_protein.txt'
-protein_protein_sim_sequence_path = './DTI_data/luo/sim_network/Sim_mat_Proteins.txt'
-protein_protein_sim_disease_path = './DTI_data/luo/sim_network/Sim_mat_protein_disease.txt'
-protein_protein_sim_interaction_path = './DTI_data/luo/sim_network/Sim_mat_protein_protein.txt'
+protein_drug_path = 'Dataset/luo/sevenNets/mat_protein_drug.txt'
+protein_protein_path = 'Dataset/luo/sevenNets/mat_protein_protein.txt'
+protein_protein_sim_sequence_path = 'Dataset/luo/sim_network/Sim_mat_Proteins.txt'
+protein_protein_sim_disease_path = 'Dataset/luo/sim_network/Sim_mat_protein_disease.txt'
+protein_protein_sim_interaction_path = 'Dataset/luo/sim_network/Sim_mat_protein_protein.txt'
 
 # About drug and protein (others)...
-protein_disease_path = './DTI_data/luo/sevenNets/mat_protein_disease.txt'
-drug_disease_path = './DTI_data/luo/sevenNets/mat_drug_disease.txt'
-drug_sideEffect_path = './DTI_data/luo/sevenNets/mat_drug_se.txt'
+protein_disease_path = 'Dataset/luo/sevenNets/mat_protein_disease.txt'
+drug_disease_path = 'Dataset/luo/sevenNets/mat_drug_disease.txt'
+drug_sideEffect_path = 'Dataset/luo/sevenNets/mat_drug_se.txt'
 
 # Step1:Construct the graph(read the data...)
 

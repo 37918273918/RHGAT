@@ -9,11 +9,11 @@ import scipy.sparse as sp
 import sys
 
 from sklearn import metrics
-from decagon.deep.optimizer import DecagonOptimizer
-from decagon.deep.model import DecagonModel
-from decagon.deep.minibatch import EdgeMinibatchIterator
-from decagon.utility import rank_metrics, preprocessing
-from decagon.utility import loadData_enzyme
+from Script.Model.optimizer import DecagonOptimizer
+from Script.Model.model import DecagonModel
+from Script.Model.minibatch import EdgeMinibatchIterator
+from Script.tools import rank_metrics, preprocessing
+from Script.tools import loadData_enzyme
 
 # Train on CPU (hide GPU) due to memory constraints
 os.environ['CUDA_VISIBLE_DEVICES'] = "6"
@@ -81,11 +81,11 @@ MSE_10_list   = []
 MAE_10_list   = []
 
 # About Drug
-drug_drug_path = './DTI_data/'+data_set+'/'+data_set+'_simmat_dc.txt'
+drug_drug_path = './Dataset/'+data_set+'/'+data_set+'_simmat_dc.txt'
 
 # About Protein
-protein_drug_path = './DTI_data/'+data_set+'/'+data_set+'_admat_dgc.txt'
-protein_protein_path = './DTI_data/'+data_set+'/'+data_set+'_simmat_dg.txt'
+protein_drug_path = './Dataset/'+data_set+'/'+data_set+'_admat_dgc.txt'
+protein_protein_path = './Dataset/'+data_set+'/'+data_set+'_simmat_dg.txt'
 
 
 drug_proten_interactions, protein_drug_interactions, interactions_margin = loadData_enzyme.load_protein_drug_interactions(margin=0.001, path=protein_drug_path)
@@ -286,14 +286,7 @@ for seed in range(10):
         (1, 0): 'innerproduct',
         (1, 1): 'innerproduct',
     }
-    # edge_type2decoder = {
-    #     (0, 0): 'dedicom',
-    #     (0, 1): 'dedicom',
-    #     (1, 0): 'dedicom',
-    #     (1, 1): 'dedicom',
-    #
-    # }
-    # edge_types = {k: len(v) for k, v in adj_mats_orig.items()}
+
     edge_types = {
                   (0, 0): 2,
                   (0, 1): 1,
@@ -304,8 +297,7 @@ for seed in range(10):
     num_edge_types = sum(edge_types.values())
     print("Edge types:", "%d" % num_edge_types)
 
-    # Important -- Do not evaluate/print validation performance every iteration as it can take
-    # substantial amount of time
+
     PRINT_PROGRESS_EVERY = 20
 
     print("Defining placeholders")

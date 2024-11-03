@@ -1,5 +1,5 @@
 import tensorflow as tf
-from ..utility.preprocessing import glorot,zeros
+from ..tools.preprocessing import glorot,zeros
 from . import inits
 # import tensorflow.compat.v1 as tf.compat.v1
 flags = tf.compat.v1.flags

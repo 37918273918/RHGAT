@@ -4,7 +4,7 @@ from __future__ import print_function
 import numpy as np
 import scipy.sparse as sp
 from sklearn.model_selection import KFold
-from ..utility import preprocessing
+from ..tools import preprocessing
 
 np.random.seed(123)
 
@@ -83,14 +83,14 @@ class EdgeMinibatchIterator(object):
         if edge_type==(0,1) or edge_type==(1,0):
             data_set = self.data_set
             ratio='oneTooneIndex'
-            train_edges = np.loadtxt('./DTI_data/'+data_set+'/'+ratio+'/train_index_(0, 1)'+str(seed)+'.txt',dtype=int)
+            train_edges = np.loadtxt('./Dataset/'+data_set+'/'+ratio+'/train_index_(0, 1)'+str(seed)+'.txt',dtype=int)
             if edge_type == (1, 0):
                 for ii in range(len(train_edges)):
                     temp = train_edges[ii][0]
                     train_edges[ii][0] = train_edges[ii][1]
                     train_edges[ii][1] = temp
 
-            test_edges_false = np.loadtxt('./DTI_data/'+data_set+'/'+ratio+'/index_test_false(0, 1)'+str(seed)+'.txt',dtype=int)
+            test_edges_false = np.loadtxt('./Dataset/'+data_set+'/'+ratio+'/index_test_false(0, 1)'+str(seed)+'.txt',dtype=int)
             if edge_type == (1,0):
                 for ii in range(len(test_edges_false)):
                     temp = test_edges_false[ii][0]
@@ -98,7 +98,7 @@ class EdgeMinibatchIterator(object):
                     test_edges_false[ii][1] = temp
             val_edges_false = test_edges_false
 
-            test_edges = np.loadtxt('./DTI_data/'+data_set+'/'+ratio+'/test_index_(0, 1)'+str(seed)+'.txt',dtype=int)
+            test_edges = np.loadtxt('./Dataset/'+data_set+'/'+ratio+'/test_index_(0, 1)'+str(seed)+'.txt',dtype=int)
             if edge_type == (1, 0):
                 for ii in range(len(test_edges)):
                     temp = test_edges[ii][0]
